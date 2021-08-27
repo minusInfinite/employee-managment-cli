@@ -1,0 +1,19 @@
+{
+  "name": "employee-managment-cli",
+  "version": "1.0.0",
+  "description": "Manage your Company via you Command Line",
+  "main": "index.js",
+  "repository": "git@github.com:minusInfinite/employee-managment-cli.git",
+  "author": "minusinfinite <ashley@minusinfinite.net> (https://github.com/minusInfinite)",
+  "license": "MIT",
+  "packageManager": "yarn@3.0.1",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "dotenv": "^10.0.0",
+    "inquirer": "^8.1.2",
+    "mysql2": "^2.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
