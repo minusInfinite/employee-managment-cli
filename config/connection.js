@@ -9,7 +9,7 @@ const db = mysql.createConnection(
         password: process.env.DBPASS,
         database: process.env.DBNAME,
     },
-    console.info(chalk.green("✔️ "))
+    console.info(chalk.green("✔️ Connected to database"))
 )
 
 module.exports = db
