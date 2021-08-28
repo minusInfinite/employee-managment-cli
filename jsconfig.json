@@ -1,0 +1,8 @@
+{
+    "typeAcquisition": {
+        "enable": true,
+        "include": [
+            "node","inquirer","mysql2","console-table-printer","chalk"
+        ]
+    }
+}
