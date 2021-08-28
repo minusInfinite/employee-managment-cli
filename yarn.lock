@@ -126,7 +126,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^16.7.4":
+"@types/node@npm:*":
   version: 16.7.4
   resolution: "@types/node@npm:16.7.4"
   checksum: da7813e6c37e7813645a9d40de6d9f803fbadb2975748d307ec31d8e4f9baabccf49b667a39e4b1288d477ec7d34a339e8a41d8703a1d7ab0ec8eb2516073f27
@@ -832,7 +832,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "employee-managment-cli@workspace:."
   dependencies:
-    "@types/node": ^16.7.4
     chalk: ^4.1.2
     console-table-printer: ^2.10.0
     dotenv: ^10.0.0

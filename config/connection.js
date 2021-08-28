@@ -1,5 +1,5 @@
 require("dotenv").config()
-const mysql = require("mysql2")
+const mysql = require("mysql2/promise")
 const chalk = require("chalk")
 
 const db = mysql.createConnection(
