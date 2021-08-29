@@ -1,13 +1,12 @@
-const { printTable } = require("console-table-printer")
 const db = require("../config/connection.js")
 
-const depQuery = /*sql*/ `SELECT name FROM Department;`
+const depQuery = /*sql*/ `SELECT name FROM Department ORDER By id;`
 
-const roleQuery = /*sql*/ `SELECT title AS name FROM role;`
+const roleQuery = /*sql*/ `SELECT title AS name FROM role ORDER By id;`
 
-const empQuery = /*sql*/ `SELECT concat(first_name,' ',last_name) AS 'Employee' FROM employee`
+const empQuery = /*sql*/ `SELECT concat(first_name,' ',last_name) AS name FROM employee ORDER By id`
 
-const managerQuery = /*sql*/ `SELECT concat(first_name,' ',last_name) AS 'Manager' FROM employee WHERE manager_id IS NULL;`
+const managerQuery = /*sql*/ `SELECT concat(first_name,' ',last_name) AS name FROM employee WHERE manager_id IS NULL ORDER By id;`
 
 const listDeps = async () => {
     let list = []

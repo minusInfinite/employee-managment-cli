@@ -1,8 +1,8 @@
 const inquirer = require("inquirer")
-const { printTable } = require("console-table-printer")
-const { indexDeps, indexRoles, indexEmp } = require("./queries/formated")
-const { listDeps, listRoles } = require("./queries/lists")
+const { listDeps, listRoles, listEmp } = require("./queries/lists")
 const { insertDep } = require("./queries/inserts")
+const mainMenu = require("./modules/menu.js")
+const { indexDeps } = require("./queries/formated")
 
 const startImg = () => `
 
@@ -23,6 +23,7 @@ const startImg = () => `
 
 function init() {
     console.info(startImg())
+    mainMenu()
 }
 
 init()

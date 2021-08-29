@@ -52,7 +52,7 @@ const insertEmp = async function (first_name, last_name, role_id, manager_id) {
             throw new Error("Name Required")
         }
         if (!manager_id) {
-            manager_id = "NULL"
+            manager_id = null
         }
         const conn = await db
         const insert = await conn.execute(empInsertQuery, [
