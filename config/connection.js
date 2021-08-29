@@ -8,6 +8,7 @@ const db = mysql.createConnection(
         user: process.env.DBUSER,
         password: process.env.DBPASS,
         database: process.env.DBNAME,
+        decimalNumbers: true,
     },
     console.info(chalk.green("✔️ Connected to database"))
 )

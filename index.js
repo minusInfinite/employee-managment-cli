@@ -1,13 +1,28 @@
 const inquirer = require("inquirer")
 const { printTable } = require("console-table-printer")
-const { indexDeps, indexRoles, indexEmp } = require("./queries/all")
+const { indexDeps, indexRoles, indexEmp } = require("./queries/formated")
+const { listDeps, listRoles } = require("./queries/lists")
+const { insertDep } = require("./queries/inserts")
 
-const db = require("./config/connection.js")
+const startImg = () => `
 
-// db.then((conn) => conn.query("select * from employee"))
-//     .then(([rows, fields]) => printTable(rows))
-//     .catch((err) => console.error(err))
+███████╗███╗░░░███╗██████╗░██╗░░░░░░█████╗░██╗░░░██╗███████╗███████╗
+██╔════╝████╗░████║██╔══██╗██║░░░░░██╔══██╗╚██╗░██╔╝██╔════╝██╔════╝
+█████╗░░██╔████╔██║██████╔╝██║░░░░░██║░░██║░╚████╔╝░█████╗░░█████╗░░
+██╔══╝░░██║╚██╔╝██║██╔═══╝░██║░░░░░██║░░██║░░╚██╔╝░░██╔══╝░░██╔══╝░░
+███████╗██║░╚═╝░██║██║░░░░░███████╗╚█████╔╝░░░██║░░░███████╗███████╗
+╚══════╝╚═╝░░░░░╚═╝╚═╝░░░░░╚══════╝░╚════╝░░░░╚═╝░░░╚══════╝╚══════╝
 
-//indexDeps()
-//indexRoles()
-//indexEmp()
+███╗░░░███╗░█████╗░███╗░░██╗░█████╗░░██████╗░███████╗██████╗░
+████╗░████║██╔══██╗████╗░██║██╔══██╗██╔════╝░██╔════╝██╔══██╗
+██╔████╔██║███████║██╔██╗██║███████║██║░░██╗░█████╗░░██████╔╝
+██║╚██╔╝██║██╔══██║██║╚████║██╔══██║██║░░╚██╗██╔══╝░░██╔══██╗
+██║░╚═╝░██║██║░░██║██║░╚███║██║░░██║╚██████╔╝███████╗██║░░██║
+╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚══╝╚═╝░░╚═╝░╚═════╝░╚══════╝╚═╝░░╚═╝
+`
+
+function init() {
+    console.info(startImg())
+}
+
+init()

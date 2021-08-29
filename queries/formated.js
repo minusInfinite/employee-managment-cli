@@ -30,6 +30,9 @@ const indexDeps = async () => {
     try {
         const conn = await db
         const [rows, fields] = await conn.query(depQuery)
+        if (rows.length > 0) {
+            throw new Error("No Departments in Database, You need to add some")
+        }
         printTable(rows)
     } catch (e) {
         console.error(e)
@@ -40,6 +43,9 @@ const indexRoles = async () => {
     try {
         const conn = await db
         const [rows, fields] = await conn.query(roleQuery)
+        if (rows.length > 0) {
+            throw new Error("No Roles in Database, You need to add some")
+        }
         printTable(rows)
     } catch (e) {
         console.error(e)
@@ -50,6 +56,9 @@ const indexEmp = async () => {
     try {
         const conn = await db
         const [rows, fields] = await conn.query(empQuery)
+        if (rows.length === 0) {
+            throw new Error("No Employees in Database, You need to add some")
+        }
         printTable(rows)
     } catch (e) {
         console.error(e)
