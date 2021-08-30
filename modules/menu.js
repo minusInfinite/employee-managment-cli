@@ -1,5 +1,10 @@
 const inquirer = require("inquirer")
-const { indexDeps, indexRoles, indexEmp } = require("../queries/formated")
+const {
+    indexDeps,
+    indexRoles,
+    indexEmp,
+    indexCosts,
+} = require("../queries/formated")
 
 const addDepartment = require("./addDep")
 const addRole = require("./addRole")
@@ -14,6 +19,7 @@ const mainMenuPrompts = {
     choices: [
         "View All Departments",
         "Add Department",
+        "View Department Costs",
         "View All Roles",
         "Add Role",
         "View All Employees",
@@ -37,6 +43,10 @@ function mainMenu() {
             }
             if (answers.action === "Add Department") {
                 await addDepartment()
+                mainMenu()
+            }
+            if (answers.action === "View Department Costs") {
+                await indexCosts()
                 mainMenu()
             }
             if (answers.action === "View All Roles") {

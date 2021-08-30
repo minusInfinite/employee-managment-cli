@@ -27,6 +27,13 @@ FROM employee E INNER JOIN (department D, role R) ON (E.role_id=R.id AND R.depar
 LEFT JOIN employee M ON M.id = E.manager_id WHERE E.manager_id IS NULL OR E.manager_id IS NOT NULL
 ORDER BY E.role_id;
 `
+//SQL to generate a table displaying department costs
+const costsQuery = /*sql*/ `
+SELECT
+D.name AS 'Department',
+SUM(R.salary) AS 'Department Costs'
+FROM employee E INNER JOIN (department D, role R) ON (E.role_id=R.id AND R.department_id=D.id)
+GROUP BY D.name;`
 
 /**
  * A Function that triggers to Department Table to be printed to the console
@@ -47,7 +54,7 @@ const indexDeps = async () => {
 }
 
 /**
- * A Function that triggers to Role Table to be printed to the console
+ * A Function that triggers the Role Table to be printed to the console
  * @returns {Promise<void>}
  */
 const indexRoles = async () => {
@@ -65,7 +72,7 @@ const indexRoles = async () => {
 }
 
 /**
- * A Function that triggers to Employee Table to be printed to the console
+ * A Function that triggers the Employee Table to be printed to the console
  * @returns {Promise<void>}
  */
 const indexEmp = async () => {
@@ -82,4 +89,24 @@ const indexEmp = async () => {
     return
 }
 
-module.exports = { indexDeps, indexRoles, indexEmp }
+/**
+ * A Function that triggers a table displaying Dept Cost to be printed to the console
+ * @returns {Promise<void>}
+ */
+const indexCosts = async () => {
+    try {
+        const conn = await db
+        const [rows, fields] = await conn.query(costsQuery)
+        if (rows.length === 0) {
+            throw new Error(
+                "Ah... your company may have no Dept, Roles or Employees"
+            )
+        }
+        printTable(rows)
+    } catch (e) {
+        console.error(e)
+    }
+    return
+}
+
+module.exports = { indexDeps, indexRoles, indexEmp, indexCosts }
