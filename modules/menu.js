@@ -4,6 +4,7 @@ const { indexDeps, indexRoles, indexEmp } = require("../queries/formated")
 const addDepartment = require("./addDep")
 const addRole = require("./addRole")
 const addEmp = require("./addEmp")
+const updateEmpRole = require("./updateEmpRole")
 
 /** @type {inquirer.QuestionCollection} */
 const mainMenuPrompts = {
@@ -17,10 +18,15 @@ const mainMenuPrompts = {
         "Add Role",
         "View All Employees",
         "Add Employee",
+        "Update Employee Title",
         "Quit",
     ],
 }
 
+/* A function to trigger the main menu
+ *this is an async function to allow for the calls to database to complete
+ *before slowing the main menu again.
+ */
 function mainMenu() {
     inquirer
         .prompt(mainMenuPrompts)
@@ -47,6 +53,10 @@ function mainMenu() {
             }
             if (answers.action === "Add Employee") {
                 await addEmp()
+                mainMenu()
+            }
+            if (answers.action === "Update Employee Title") {
+                await updateEmpRole()
                 mainMenu()
             }
             if (answers.action === "Quit") {

@@ -1,9 +1,6 @@
-const inquirer = require("inquirer")
-const { listDeps, listRoles, listEmp } = require("./queries/lists")
-const { insertDep } = require("./queries/inserts")
 const mainMenu = require("./modules/menu.js")
-const { indexDeps } = require("./queries/formated")
 
+//a pretty start up picture
 const startImg = () => `
 
 ███████╗███╗░░░███╗██████╗░██╗░░░░░░█████╗░██╗░░░██╗███████╗███████╗
@@ -21,6 +18,7 @@ const startImg = () => `
 ╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚══╝╚═╝░░╚═╝░╚═════╝░╚══════╝╚═╝░░╚═╝
 `
 
+//start the application
 function init() {
     console.info(startImg())
     mainMenu()

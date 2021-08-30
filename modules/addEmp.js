@@ -1,13 +1,9 @@
 const inquirer = require("inquirer")
-const mainMenu = require("./menu.js")
 const { insertEmp } = require("../queries/inserts.js")
 const { listRoles, listManagers } = require("../queries/lists.js")
 
 async function addEmp() {
     const roleList = await listRoles()
-    /**
-     * @type {Array} mangaerList
-     */
     const managerList = await listManagers()
     await inquirer
         .prompt([
@@ -27,7 +23,10 @@ async function addEmp() {
                 message: "Select Employees Role",
                 choices: roleList,
                 filter: (answer) => {
-                    return roleList.findIndex((el) => el === answer)
+                    id = roleList.findIndex((el) => el === answer) + 1
+                    return id
+                    //the arr index starts at 0 but the database id starts at 1
+                    //the +1 to findIndex should allign the return
                 },
             },
             {
@@ -35,12 +34,17 @@ async function addEmp() {
                 name: "manager",
                 message: "Select Reporting Manager",
                 choices: () => {
+                    //as Array.concat() returns a new array this will add a None option
+                    //this will allow it possilbe to isolate a value for NULL
                     return managerList.concat(["None"])
                 },
                 filter: (answer) => {
                     let result
                     if (answer !== "None") {
-                        result = managerList.findIndex((el) => el === answer)
+                        result =
+                            managerList.findIndex((el) => el === answer) + 1
+                        //the arr index starts at 0 but the database id starts at 1
+                        //the +1 to findIndex should allign the return
                     } else {
                         result = false
                     }

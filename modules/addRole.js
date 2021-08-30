@@ -22,8 +22,8 @@ async function addRole() {
                 message: "Select a Department",
                 choices: depList,
                 filter: (answer) => {
-                    console.log(depList.findIndex((el) => el === answer))
-                    return depList.findIndex((el) => el === answer)
+                    id = depList.findIndex((el) => el === answer) + 1
+                    return id
                 },
             },
         ])

@@ -1,8 +1,10 @@
 const { printTable } = require("console-table-printer")
 const db = require("../config/connection.js")
 
+//SQL Queries, done is a way to provide a more "Formatted" output
 const depQuery = /*sql*/ `SELECT id AS 'ID', name AS 'Department Name' FROM Department ORDER By id;`
 
+//A simple Inner Join query to display the Department ID with it's name
 const roleQuery = /*sql*/ `
 SELECT 
 Role.id AS 'Role ID', 
@@ -11,6 +13,8 @@ Role.salary AS 'Salary',
 department.name AS 'Department'
 FROM Role INNER JOIN Department ON Role.department_id=Department.id ORDER By Role.id;`
 
+//SQL Self-Join to display the Manager name bases on their own ID
+//With an Inner Join to show data from Role and Department Tables
 const empQuery = /*sql*/ `
 SELECT
 E.id, 
@@ -25,7 +29,8 @@ ORDER BY E.role_id;
 `
 
 /**
- * Select and return all Department IDs and Names
+ * A Function that triggers to Department Table to be printed to the console
+ * @returns {void}
  */
 const indexDeps = async () => {
     try {
@@ -41,6 +46,10 @@ const indexDeps = async () => {
     return
 }
 
+/**
+ * A Function that triggers to Role Table to be printed to the console
+ * @returns {void}
+ */
 const indexRoles = async () => {
     try {
         const conn = await db
@@ -55,6 +64,10 @@ const indexRoles = async () => {
     return
 }
 
+/**
+ * A Function that triggers to Employee Table to be printed to the console
+ * @returns {void}
+ */
 const indexEmp = async () => {
     try {
         const conn = await db
