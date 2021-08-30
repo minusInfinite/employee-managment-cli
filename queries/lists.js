@@ -1,5 +1,6 @@
 const db = require("../config/connection.js")
 
+//SQL Queries to allow a list of values to be generated
 const depQuery = /*sql*/ `SELECT name FROM Department ORDER By id;`
 
 const roleQuery = /*sql*/ `SELECT title AS name FROM role ORDER By id;`
@@ -8,6 +9,7 @@ const empQuery = /*sql*/ `SELECT concat(first_name,' ',last_name) AS name FROM e
 
 const managerQuery = /*sql*/ `SELECT concat(first_name,' ',last_name) AS name FROM employee WHERE manager_id IS NULL ORDER By id;`
 
+//Return a list of Departments
 const listDeps = async () => {
     let list = []
     try {
@@ -24,6 +26,7 @@ const listDeps = async () => {
     return list
 }
 
+//Return a list of Role Titles
 const listRoles = async () => {
     let list = []
     try {
@@ -40,6 +43,7 @@ const listRoles = async () => {
     return list
 }
 
+//Return a list of Employee Full Names
 const listEmp = async () => {
     let list = []
     try {
@@ -56,6 +60,7 @@ const listEmp = async () => {
     return list
 }
 
+//Return a list of Employee Full Names
 const listManagers = async () => {
     let list = []
     try {

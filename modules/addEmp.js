@@ -38,13 +38,10 @@ async function addEmp() {
                     //this will allow it possilbe to isolate a value for NULL
                     return managerList.concat(["None"])
                 },
-                filter: (answer) => {
+                filter: async (answer) => {
                     let result
                     if (answer !== "None") {
-                        result =
-                            managerList.findIndex((el) => el === answer) + 1
-                        //the arr index starts at 0 but the database id starts at 1
-                        //the +1 to findIndex should allign the return
+                        result = await managerId(answer)
                     } else {
                         result = false
                     }

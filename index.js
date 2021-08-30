@@ -1,3 +1,4 @@
+const db = require("./config/connection.js")
 const mainMenu = require("./modules/menu.js")
 
 //a pretty start up picture

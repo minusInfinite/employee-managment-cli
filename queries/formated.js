@@ -30,7 +30,7 @@ ORDER BY E.role_id;
 
 /**
  * A Function that triggers to Department Table to be printed to the console
- * @returns {void}
+ * @returns {Promise<void>}
  */
 const indexDeps = async () => {
     try {
@@ -48,7 +48,7 @@ const indexDeps = async () => {
 
 /**
  * A Function that triggers to Role Table to be printed to the console
- * @returns {void}
+ * @returns {Promise<void>}
  */
 const indexRoles = async () => {
     try {
@@ -66,7 +66,7 @@ const indexRoles = async () => {
 
 /**
  * A Function that triggers to Employee Table to be printed to the console
- * @returns {void}
+ * @returns {Promise<void>}
  */
 const indexEmp = async () => {
     try {

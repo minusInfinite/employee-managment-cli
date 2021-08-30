@@ -18,7 +18,7 @@ const mainMenuPrompts = {
         "Add Role",
         "View All Employees",
         "Add Employee",
-        "Update Employee Title",
+        "Update Employee Title or Manager",
         "Quit",
     ],
 }

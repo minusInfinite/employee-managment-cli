@@ -2,7 +2,7 @@ const { printTable } = require("console-table-printer")
 const db = require("../config/connection")
 
 /*
- * SQL Queries to insert and display data from database
+ * SQL Queries to insert then display inserted data
  */
 const depInsertQuery = /*sql*/ `INSERT INTO Department (name) VALUES (?)`
 const depSelQuery = /*sql*/ `SELECT name AS 'Department Name' FROM Department WHERE id = (?)`
