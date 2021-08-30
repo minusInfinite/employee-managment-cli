@@ -94,3 +94,5 @@ inquirer - <https://github.com/SBoudrias/Inquirer.js>
 mysql2 - <https://github.com/sidorares/node-mysql2>
 
 Running on NodeJS - <https://nodejs.org/>
+
+ASCII Text Logo generated at <https://fsymbols.com/generators/carty/>
