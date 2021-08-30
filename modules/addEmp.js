@@ -1,5 +1,6 @@
 const inquirer = require("inquirer")
 const { insertEmp } = require("../queries/inserts.js")
+const managerId = require("../queries/find.js")
 const { listRoles, listManagers } = require("../queries/lists.js")
 
 async function addEmp() {

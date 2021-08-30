@@ -5,9 +5,11 @@ const db = require("../config/connection")
  * SQL Queries to insert then display inserted data
  */
 const depInsertQuery = /*sql*/ `INSERT INTO Department (name) VALUES (?)`
+
 const depSelQuery = /*sql*/ `SELECT name AS 'Department Name' FROM Department WHERE id = (?)`
 
 const roleInsertQuery = /*sql*/ `INSERT INTO Role (title, salary,department_id) VALUES (?,?,?)`
+
 const roleSelQuery = /*sql*/ `
 SELECT 
 role.id AS 'Role ID', 
@@ -18,15 +20,18 @@ FROM role INNER JOIN department ON role.department_id=department.id
 WHERE role.id = (?);`
 
 const empInsertQuery = /*sql*/ `INSERT INTO Employee (first_name, last_name, role_id, manager_id) VALUES (?,?,?,?)`
+
 const empSelQuery = /*sql*/ `
-SELECT 
+SELECT
 E.id, 
 concat(E.first_name,' ',E.last_name) AS 'Full Name',
 R.title AS 'Title',
+R.salary AS 'Salary',
 D.name AS 'Department',
 concat(M.first_name,' ',M.last_name) AS 'Manager Name'
-FROM employee E INNER JOIN (department D, role R) ON (E.role_id=R.id AND R.department_id=D.id),
-employee M WHERE E.manager_id = M.id AND E.id = (?);`
+FROM employee E INNER JOIN (department D, role R) ON (E.role_id=R.id AND R.department_id=D.id)
+LEFT JOIN employee M ON M.id = E.manager_id 
+WHERE (E.manager_id IS NULL OR E.manager_id IS NOT NULL) AND E.id=?;`
 
 //Insert a new Department name
 const insertDep = async function (name) {
@@ -67,20 +72,20 @@ const insertRole = async function (title, salary, department_id) {
 }
 
 //insert a new employee with their first and last name, role and manager.
-const insertEmp = async function (first_name, last_name, role_id, manager_id) {
+const insertEmp = async function (first_name, last_name, role_id, managerid) {
     try {
         if (!first_name || !last_name || !role_id) {
             throw new Error("Name Required")
         }
-        if (!manager_id) {
-            manager_id = null
+        if (!managerid) {
+            managerid = null
         }
         const conn = await db
         const insert = await conn.execute(empInsertQuery, [
             first_name,
             last_name,
             role_id,
-            manager_id,
+            managerid,
         ])
         const [rows, fields] = await conn.execute(empSelQuery, [
             insert[0].insertId,

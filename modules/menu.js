@@ -55,7 +55,7 @@ function mainMenu() {
                 await addEmp()
                 mainMenu()
             }
-            if (answers.action === "Update Employee Title") {
+            if (answers.action === "Update Employee Title or Manager") {
                 await updateEmpRole()
                 mainMenu()
             }
