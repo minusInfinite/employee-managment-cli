@@ -87,11 +87,11 @@ Quit - Close the application
 
 This application has the following depenancies
 
-Chalk - <https://github.com/chalk/chalk>
-Console-Table-Printer - <https://console-table.netlify.app/>
-DotENV - <https://github.com/motdotla/dotenv>
-inquirer - <https://github.com/SBoudrias/Inquirer.js>
-mysql2 - <https://github.com/sidorares/node-mysql2>
+- Chalk - <https://github.com/chalk/chalk>
+- Console-Table-Printer - <https://console-table.netlify.app/>
+- DotENV - <https://github.com/motdotla/dotenv>
+- inquirer - <https://github.com/SBoudrias/Inquirer.js>
+- mysql2 - <https://github.com/sidorares/node-mysql2>
 
 Running on NodeJS - <https://nodejs.org/>
 
